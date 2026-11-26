@@ -1,0 +1,203 @@
+.projects-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.projects-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+}
+
+.projects-top h2 {
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.14px;
+    font-weight: 700;
+}
+
+/* Filter Pills */
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.filter-pill {
+    background: var(--bg-dark-grey);
+    color: var(--text-grey);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-pill:hover {
+    border-color: var(--accent-green);
+    color: var(--text-white);
+}
+
+.filter-pill.active {
+    background: var(--accent-green);
+    color: var(--bg-black);
+    border-color: var(--accent-green);
+}
+
+/* Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(36, 36, 36, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 20px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: rgba(78, 225, 160, 0.45);
+}
+
+.project-thumb-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-color: var(--bg-dark-grey);
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.project-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    display: none;
+}
+
+.project-subtitle {
+    color: var(--accent-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.project-title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    list-style: none;
+    color: var(--text-grey);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.case-study-details {
+    background: var(--bg-dark-grey);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.case-study-details p {
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--text-grey);
+}
+
+.case-study-details strong {
+    color: var(--text-white);
+}
+
+.project-mobile-links {
+    display: flex;
+    gap: 28px;
+    margin-top: auto;
+}
+
+/* Tablet Layout */
+@media (min-width: 768px) {
+    .projects-top h2 {
+        font-size: 64px;
+        line-height: 68px;
+        letter-spacing: -2px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px 28px;
+    }
+}
+
+/* Desktop Layout with Hover Overlay */
+@media (min-width: 1024px) {
+    .projects-section {
+        padding-bottom: 120px;
+    }
+
+    .projects-top h2 {
+        font-size: 76px;
+        line-height: 80px;
+        letter-spacing: -2.2px;
+    }
+
+    .project-mobile-links {
+        display: none;
+    }
+
+    .project-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.82);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-thumb-wrapper:hover .project-overlay,
+    .project-thumb-wrapper:focus-within .project-overlay {
+        opacity: 1;
+    }
+}

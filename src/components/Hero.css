@@ -1,0 +1,184 @@
+.hero-wrapper {
+    position: relative;
+    padding-bottom: 80px;
+    perspective: 1000px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+/* 5 Stacked Figma Ovals */
+.orbital-rings {
+    position: absolute;
+    left: -260px;
+    top: 40px;
+    width: 530px;
+    height: 140px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orbital-rings .ring {
+    position: absolute;
+    width: 530px;
+    height: 80px;
+    border: 1px solid var(--text-white);
+    border-radius: 50%;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-image-stage {
+    margin-top: -92px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.hero-gradient-box {
+    position: relative;
+    width: 174px;
+    height: 383px;
+    background: linear-gradient(180deg, rgba(36, 36, 36, 0.0001) 0.65%, #242424 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 1px solid rgba(78, 225, 160, 0.35);
+    border-radius: 4px;
+}
+
+.hero-portrait {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+.hero-image-stage:hover .hero-portrait {
+    filter: grayscale(0%);
+}
+
+.hero-3d-badge {
+    position: absolute;
+    bottom: 18px;
+    left: -20px;
+    background: var(--bg-black);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 24px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.14px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.name-underline {
+    border-bottom: 4px solid var(--accent-green);
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.hero-text p {
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-grey);
+    max-width: 445px;
+    margin: 0 auto 28px;
+}
+
+/* Tablet Layout */
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-end;
+        text-align: left;
+        padding-top: 20px;
+    }
+
+    .hero-image-stage {
+        margin-top: -110px;
+        margin-bottom: 0;
+    }
+
+    .hero-gradient-box {
+        width: 322px;
+        height: 560px;
+    }
+
+    .hero-portrait {
+        height: 440px;
+    }
+
+    .hero-text {
+        max-width: 460px;
+        z-index: 15;
+        padding-bottom: 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 64px;
+        line-height: 68px;
+        letter-spacing: -2px;
+        margin-bottom: 32px;
+    }
+
+    .hero-text p {
+        margin: 0 0 34px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+/* Desktop Layout - Overlapping Figma Editorial Grid */
+@media (min-width: 1024px) {
+    .hero-wrapper {
+        padding-bottom: 104px;
+    }
+
+    .hero-gradient-box {
+        width: 420px;
+        height: 640px;
+    }
+
+    .hero-portrait {
+        height: 520px;
+    }
+
+    .hero-text {
+        position: absolute;
+        left: 32px;
+        bottom: 24px;
+        max-width: 720px;
+        pointer-events: none;
+        /* Allows mouse hover to reach the 3D card underneath */
+    }
+
+    .hero-text a {
+        pointer-events: auto;
+    }
+
+    .hero-text h1 {
+        font-size: 76px;
+        line-height: 80px;
+        letter-spacing: -2.2px;
+    }
+}
