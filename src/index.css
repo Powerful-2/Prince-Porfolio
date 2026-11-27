@@ -1,11 +1,21 @@
 :root {
-  --bg-black: #151515;
-  --bg-dark-grey: #242424;
-  --accent-green: #4EE1A0;
-  --text-white: #FFFFFF;
-  --text-grey: #D9D9D9;
-  --error-red: #FF6F5B;
-  --font-main: 'Space Grotesk', sans-serif;
+  --bg: #F7F5F2;
+  /* 70% Warm Stone Canvas */
+  --ink: #111111;
+  /* 15% Deep Obsidian Ink */
+  --surface: #EBE7E0;
+  /* 10% Soft Sand Surface */
+  --accent: #FF4D00;
+  /* 5% Vibrant Flame Orange (Sparingly!) */
+  --text: #555555;
+  /* Secondary Slate Charcoal */
+  --dark: #1A1A1A;
+  /* Rich Onyx for Footer / Contrast */
+  --white: #FFFFFF;
+  --border: rgba(17, 17, 17, 0.12);
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -19,46 +29,80 @@ html {
 }
 
 body {
-  background-color: var(--bg-black);
-  color: var(--text-white);
-  font-family: var(--font-main);
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
 .container {
   width: 100%;
-  max-width: 1110px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding: 0 32px;
+    padding: 0 40px;
   }
 }
 
-/* Figma Underlined CTA Button */
-.btn-underline {
-  display: inline-block;
-  font-family: var(--font-main);
+/* Primary Editorial CTA Button */
+.btn-editorial-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--ink);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 14px;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: 2.29px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-white);
   text-decoration: none;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--accent-green);
-  padding-bottom: 10px;
+  padding: 16px 28px;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
   cursor: pointer;
-  transition: color 0.25s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
 }
 
-.btn-underline:hover {
-  color: var(--accent-green);
+.btn-editorial-primary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Secondary Editorial Button */
+.btn-editorial-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-editorial-secondary:hover {
+  border-color: var(--ink);
   transform: translateY(-2px);
 }

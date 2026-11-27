@@ -1,80 +1,216 @@
-.about-section {
-    padding-top: 72px;
-    padding-bottom: 72px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+.editorial-section {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    border-bottom: 1px solid var(--border);
 }
 
-.section-eyebrow {
+.editorial-eyebrow {
     display: inline-block;
-    color: var(--accent-green);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+
+.editorial-h2 {
+    font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.section-header-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+}
+
+.editorial-lead-story {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 560px;
+}
+
+/* 3 Pillars Grid */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.pillar-card {
+    background-color: var(--surface);
+    padding: 32px 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+}
+
+.pillar-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent);
     margin-bottom: 12px;
 }
 
-.about-grid {
+.pillar-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.pillar-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+}
+
+/* TWO WORLDS SECTION */
+.two-worlds-wrapper {
+    background-color: var(--surface);
+    padding-top: 88px;
+    padding-bottom: 88px;
+    border-bottom: 1px solid var(--border);
+}
+
+.worlds-top {
+    margin-bottom: 48px;
+}
+
+.worlds-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
+    margin-bottom: 40px;
 }
 
-.about-story h2 {
-    font-size: 40px;
-    line-height: 44px;
-    letter-spacing: -1.14px;
-    margin-bottom: 20px;
+.world-card {
+    background-color: var(--bg);
+    padding: 36px 32px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
 }
 
-.about-lead {
-    font-size: 20px;
-    line-height: 30px;
+.world-sub {
+    font-family: var(--font-display);
+    font-size: 12px;
     font-weight: 700;
-    color: var(--text-white);
-    margin-bottom: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
 }
 
-.about-body {
+.world-card h3 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 8px 0 14px;
+}
+
+.world-summary {
     font-size: 16px;
-    line-height: 26px;
-    color: var(--text-grey);
-    margin-bottom: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 24px;
 }
 
-.about-cards {
+.world-traits {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
 }
 
-.about-highlight-card {
-    background: var(--bg-dark-grey);
-    padding: 24px;
-    border-left: 3px solid var(--accent-green);
+.world-traits li {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
     border-radius: 4px;
+    border: 1px solid var(--border);
 }
 
-.about-highlight-card h3 {
+.worlds-closing {
+    font-family: var(--font-display);
     font-size: 20px;
-    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 720px;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 48px;
 }
 
-.about-highlight-card p {
-    color: var(--text-grey);
-    font-size: 15px;
-    line-height: 24px;
-}
-
-@media (min-width: 1024px) {
-    .about-grid {
-        grid-template-columns: 1.2fr 1fr;
-        align-items: center;
-        gap: 60px;
+@media (min-width: 768px) {
+    .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .about-story h2 {
-        font-size: 56px;
-        line-height: 60px;
+    .worlds-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proof-strip {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 640px;
+    }
+}
+
+.proof-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+}
+
+.proof-value {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.proof-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+@media (min-width: 768px) {
+    .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .worlds-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proof-strip {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 960px) {
+    .section-header-split {
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+        gap: 48px;
     }
 }

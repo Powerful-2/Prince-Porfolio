@@ -3,25 +3,20 @@ import { personalInfo } from "../data/portfolioData";
 import princePhoto from "../assets/Prince.jpg";
 import "./Hero.css";
 
-
 export default function Hero() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+  const mouseXSpring = useSpring(x, { stiffness: 120, damping: 18 });
+  const mouseYSpring = useSpring(y, { stiffness: 120, damping: 18 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    x.set(mouseX / width - 0.5);
-    y.set(mouseY / height - 0.5);
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -29,67 +24,67 @@ export default function Hero() {
     y.set(0);
   };
 
-  const rings = Array.from({ length: 5 }, (_, index) => index);
-
   return (
-    <header className="hero-wrapper">
-      {/* Decorative 3D Perspective Rings from Figma */}
-      <div className="orbital-rings" aria-hidden="true">
-        {rings.map((ring) => (
-          <motion.div
-            key={ring}
-            className="ring"
-            style={{ top: `${ring * 12}px` }}
-            animate={{ rotateZ: ring % 2 === 0 ? 4 : -4 }}
-            transition={{
-              duration: 6 + ring,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut"
-            }}
+    <section className="editorial-hero container">
+      {/* LEFT 55% */}
+      <motion.div
+        className="hero-left"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65 }}
+      >
+        <span className="hero-eyebrow">{personalInfo.eyebrow}</span>
+
+        <h1 className="hero-display-title">
+          <span>UNDERSTAND.</span>
+          <span>BUILD.</span>
+          <span className="accent-word">IMPROVE.</span>
+        </h1>
+
+        <p className="hero-supporting-text">{personalInfo.supportingCopy}</p>
+
+        <div className="hero-btn-group">
+          <a href="#work" className="btn-editorial-primary">
+            VIEW MY WORK <span aria-hidden="true">→</span>
+          </a>
+          <a href="#about" className="btn-editorial-secondary">
+            ABOUT ME <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </motion.div>
+
+      {/* RIGHT 45% */}
+      <motion.div
+        className="hero-right"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.15 }}
+      >
+        <div className="portrait-bg-type" aria-hidden="true">
+          SYS // 01
+        </div>
+
+        <div className="editorial-portrait-frame">
+          <div className="orange-light-streak" aria-hidden="true" />
+          <div className="editorial-grid-lines" aria-hidden="true" />
+
+          <img
+            src={princePhoto}
+            alt="Prince Chinonso — Engineering-minded Frontend Developer"
+            className="editorial-portrait-img"
           />
-        ))}
-      </div>
 
-      <div className="hero container">
-        {/* 3D Interactive Profile Card */}
-        <motion.div
-          className="hero-image-stage"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="hero-gradient-box">
-            <img
-              src={princePhoto}
-              alt={personalInfo.fullName}
-              className="hero-portrait"
-            />
-
-            <div className="hero-3d-badge" style={{ transform: "translateZ(35px)" }}>
-              ⚡ React & 3D UI
-            </div>
+          <div className="tech-spec-tag top-left">
+            <span>LOC // LAGOS, NG</span>
           </div>
-        </motion.div>
-
-        {/* Hero Typography */}
-        <motion.div
-          className="hero-text"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-        >
-          <h1>
-            Nice to meet you! <br className="tablet-break" />
-            I’m <span className="name-underline">{personalInfo.fullName}</span>.
-          </h1>
-          <p>{personalInfo.bio}</p>
-          <a href="#contact" className="btn-underline">Contact Me</a>
-        </motion.div>
-      </div>
-    </header>
+          <div className="tech-spec-tag bottom-right" style={{ transform: "translateZ(25px)" }}>
+            <span className="spec-dot" /> {personalInfo.portraitBadge}
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

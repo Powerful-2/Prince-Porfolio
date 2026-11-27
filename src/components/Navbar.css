@@ -1,45 +1,70 @@
-.navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding-top: 20px;
-    position: relative;
-    z-index: 20;
+.editorial-nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(247, 245, 242, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
 }
 
-.nav-logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-white);
+.editorial-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+}
+
+.editorial-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--ink);
     text-decoration: none;
-    letter-spacing: -0.33px;
 }
 
-.nav-socials {
-    display: flex;
+.editorial-nav-links {
+    display: none;
+    list-style: none;
+    gap: 32px;
+}
+
+.editorial-nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.editorial-nav-links a:hover {
+    color: var(--ink);
+}
+
+.nav-cta-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 25px;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    transition: all 0.25s ease;
 }
 
-.nav-socials a {
-    color: var(--text-white);
-    transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.nav-socials a:hover {
-    color: var(--accent-green);
-    transform: translateY(-3px);
+.nav-cta-btn:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
 }
 
 @media (min-width: 768px) {
-    .navbar {
-        flex-direction: row;
-        justify-content: space-between;
-        padding-top: 30px;
-    }
-
-    .nav-logo {
-        font-size: 32px;
+    .editorial-nav-links {
+        display: flex;
     }
 }
